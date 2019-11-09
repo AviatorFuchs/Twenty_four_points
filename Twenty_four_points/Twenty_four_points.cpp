@@ -211,7 +211,7 @@ int main() {
 		do {
 			blockphase();
 			loopstate = (loopstate + 1) % 320;
-		} while (loopstate == 0 && cache != 24.0);
+		} while (loopstate != 0 && cache != 24.0);
 		if (loopss == 24) {
 			hasResult = false;
 		}
