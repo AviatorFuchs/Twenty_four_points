@@ -205,16 +205,17 @@ void blockphase() {
 int main() {
 	cout << "This is a mathematic game \"24 Points\"." << endl << "Input number 2~10 or A,J,Q,K in one line and then enter." << endl;
 	while (!cutstring()) {}
+	int loopss = 0;
 	do {
 		sorting(card[0], card[1], card[2], card[3]);
 		do {
 			blockphase();
-			loopstate++;
-		} while (loopstate / 320 <= 1 && cache != 24.0);
-		if (loopstate > 7680) {
+			loopstate = (loopstate + 1) % 320;
+		} while (loopstate == 0 && cache != 24.0);
+		if (loopss == 24) {
 			hasResult = false;
 		}
-	} while (cache != 24.0 && loopstate <= 7680);
+	} while (cache != 24.0 && loopss != 24);
 	outputResult();
 	return 0;
 }
