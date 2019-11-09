@@ -22,11 +22,20 @@ bool cutstring() {
 	getline(cin, str);
 	int cardio = 0;
 	for (unsigned int length = 0; length < str.length(); length++) {
+		if (cardio >= 4) {
+			cout << "Invalid input." << endl;
+			return false;
+		}
 		//Iterate every character in the input string.
 		if (str[length] == '1') {
-			if (length < str.length()) {
+			if (length < str.length() - 1) {
 				if (str[length + 1] == '0') {
 					card[cardio++] = 10;
+					length++;
+				}
+				else {
+					cout << "Invalid input." << endl;
+					return false;
 				}
 			}
 			else {
