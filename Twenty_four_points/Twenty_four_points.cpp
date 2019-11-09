@@ -24,9 +24,10 @@ bool cutstring() {
 	for (unsigned int length = 0; length < str.length(); length++) {
 		//Iterate every character in the input string.
 		if (str[length] == '1') {
-			if (str[length + 1] == '0') {
-				card[cardio] = 10;
-				cardio++;
+			if (length < str.length()) {
+				if (str[length + 1] == '0') {
+					card[cardio++] = 10;
+				}
 			}
 			else {
 				cout << "Invalid input." << endl;
@@ -34,28 +35,23 @@ bool cutstring() {
 			}
 		}
 		else if (str[length] == 'j' || str[length] == 'J') {
-			card[cardio] = 11;
-			cardio++;
+			card[cardio++] = 11;
 		}
 		else if (str[length] == 'q' || str[length] == 'Q') {
-			card[cardio] = 12;
-			cardio++;
+			card[cardio++] = 12;
 		}
 		else if (str[length] == 'k' || str[length] == 'K') {
-			card[cardio] = 13;
-			cardio++;
+			card[cardio++] = 13;
 		}
 		else if (str[length] == 'a' || str[length] == 'A') {
-			card[cardio] = 1;
-			cardio++;
+			card[cardio++] = 1;
 		}
-		else if (str[length] == ' ' || str[length] == '0') {
+		else if (str[length] == ' ' || str[length] == '0' || str[length] == ',') {
 			//Empty space will be ignored. And if the number is ten, the zero will have been used, so it will be ignored as well.
 			//After all, 08 == 8. [doge]
 		}
-		else if (int(str[length] - '0') < 10) {
-			card[cardio] = int(str[length] - '0');
-			cardio++;
+		else if (int(str[length] - '0') < 10 && int(str[length] - '0') > 1){
+			card[cardio++] = int(str[length] - '0');
 		}
 		else {
 			cout << "Invalid input." << endl;
